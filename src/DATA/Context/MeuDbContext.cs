@@ -14,6 +14,7 @@ namespace DATA.Context
         {
             
         }
+
         public DbSet<Anuncio> Anuncios { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<SubCategoria> SubCategorias { get; set; }
@@ -25,6 +26,7 @@ namespace DATA.Context
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<TipoAnuncio> TiposAnuncios { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+
     }
 
 }
