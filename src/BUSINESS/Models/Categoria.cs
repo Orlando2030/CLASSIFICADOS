@@ -8,6 +8,11 @@ namespace BUSINESS.Models
 {
     public class Categoria : Entity
     {
+
         public string NomeCategoria { get; set; }
+
+        /* EF Relations */
+        public IEnumerable<SubCategoria> SubCategoria { get; set; }
+
     }
 }

@@ -14,6 +14,6 @@ namespace BUSINESS.Models
 
         /* EF Relations */
         public Categoria Categoria { get; set; }
-
+        public IEnumerable<Marca> Marca { get; set; }
     }
 }

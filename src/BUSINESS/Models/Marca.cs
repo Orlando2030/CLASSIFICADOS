@@ -14,5 +14,6 @@ namespace BUSINESS.Models
 
         /* EF Relations */
         public SubCategoria SubCategoria { get; set; }
+        public IEnumerable<Modelo> Modelo { get; set; }
     }
 }

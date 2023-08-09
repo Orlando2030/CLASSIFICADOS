@@ -11,6 +11,6 @@ namespace BUSINESS.Models
         public Guid ID_Anuncio { get; set; }
 
         /* EF Relations */
-        public Anuncio Anuncio { get; set; }
+        public IEnumerable<Anuncio> Anuncio { get; set; }
     }
 }
