@@ -13,7 +13,9 @@ namespace DATA.Mappings
     {
         public void Configure(EntityTypeBuilder<Pedido> builder)
         {
+            builder.HasKey(p => p.Id);
 
+            builder.ToTable("Pedidos");
         }
     }
 }

@@ -31,13 +31,11 @@ namespace DATA.Mappings
                 .IsRequired()
                 .HasColumnType("varchar(50)");
 
-            builder.Property(e => e.Estado)
+            builder.Property(e => e.Cep)
                 .IsRequired()
                 .HasColumnType("varchar(9)");
 
-            // 1 : 1 => Endereco : Usuario
-            builder.HasOne(e => e.Usuario)
-                .WithOne(u => u.Endereco);
+            builder.ToTable("Enderecos");
 
         }
     }

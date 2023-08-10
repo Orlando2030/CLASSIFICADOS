@@ -16,7 +16,7 @@ namespace DATA.Context
         }
 
         public DbSet<Anuncio> Anuncios { get; set; }
-        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Mensagem> Categorias { get; set; }
         public DbSet<SubCategoria> SubCategorias { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Loja> Lojas { get; set; }
@@ -26,6 +26,20 @@ namespace DATA.Context
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<TipoAnuncio> TiposAnuncios { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            foreach (var property in modelBuilder.Model.GetEntityTypes()
+                .SelectMany(e => e.GetProperties()
+                    .Where(p => p.ClrType == typeof(string))))
+                property.SetColumnType("varchar(100)");
+
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(MeuDbContext).Assembly);
+
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys())) relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
+
+            base.OnModelCreating(modelBuilder);
+        }
 
     }
 

@@ -21,6 +21,7 @@ namespace BUSINESS.Models
         public string Descricao { get; set; }
         public decimal Valor_Antigo { get; set; }
         public decimal Valor { get; set; }
+        public decimal Imagem { get; set; }
         public bool Status { get; set; }
 
         public int Ano { get; set; }

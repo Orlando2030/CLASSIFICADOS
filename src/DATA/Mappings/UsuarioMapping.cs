@@ -27,9 +27,8 @@ namespace DATA.Mappings
                 .IsRequired()
                 .HasColumnType("varchar(13)");
 
-            // 1 : 1 => Usuario : Endereco
-            builder.HasOne(u => u.Endereco)
-                .WithOne(e => e.Usuario);
+
+            builder.ToTable("Usuarios");
         }
     }
 }

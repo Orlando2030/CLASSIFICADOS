@@ -18,11 +18,6 @@ namespace DATA.Mappings
                 .IsRequired()
                 .HasColumnType("varchar(200)");
 
-            // 1 : N => SubCategotia : Marca
-            builder.HasMany(s => s.Marca)
-                .WithOne(m => m.SubCategoria)
-                .HasForeignKey(m => m.ID_SubCategoria);
-
             builder.ToTable("SubCategorias");
         }
     }

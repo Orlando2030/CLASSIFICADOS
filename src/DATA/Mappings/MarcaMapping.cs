@@ -18,11 +18,6 @@ namespace DATA.Mappings
                 .IsRequired()
                 .HasColumnType("varchar(200)");
 
-            // 1 : N =>  Marca : Modelo
-            builder.HasMany(m => m.Modelo)
-                .WithOne(mo => mo.Marca)
-                .HasForeignKey(mo => mo.ID_Marca);
-
             builder.ToTable("Marcas");
         }
     }
