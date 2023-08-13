@@ -12,7 +12,7 @@ namespace DATA.Context
     {
         public MeuDbContext(DbContextOptions<MeuDbContext> options) : base(options)
         {
-
+          
         }
 
         public DbSet<Anuncio> Anuncios { get; set; }

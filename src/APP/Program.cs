@@ -2,6 +2,10 @@ using DATA.Context;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
+using BUSINESS.Interfaces;
+using DATA.Repository;
+using Microsoft.AspNetCore.Hosting;
+using APP.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,11 +22,14 @@ builder.Services.AddDbContext<MeuDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.ResolveDependencies();
 
 var app = builder.Build();
 
@@ -32,8 +39,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-
 
 // Configure
 app.UseHttpsRedirection();
