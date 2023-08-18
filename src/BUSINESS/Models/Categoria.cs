@@ -12,7 +12,6 @@ namespace BUSINESS.Models
         public string NomeCategoria { get; set; }
 
         /* EF Relations */
-        public Anuncio Anuncio { get; set; }
         public IEnumerable<SubCategoria> SubCategoria { get; set; }
 
     }

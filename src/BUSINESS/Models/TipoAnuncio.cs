@@ -11,7 +11,5 @@ namespace BUSINESS.Models
         public string NomeTipoAnuncio { get; set; }
         public int Duracao { get; set; }
         public decimal Valor { get; set; }
-
-        public Anuncio Anuncio { get; set; }
     }
 }

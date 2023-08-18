@@ -1,6 +1,9 @@
-﻿using BUSINESS.Interfaces;
+﻿using Business.Intefaces;
+using BUSINESS.Interfaces;
+using BUSINESS.Services;
 using DATA.Context;
 using DATA.Repository;
+using DevIO.Business.Notificacoes;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Collections.Generic;
@@ -25,6 +28,8 @@ namespace APP.Configuration
             services.AddScoped<ITipoAnuncioRepository, TipoAnuncioRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
+            services.AddScoped<INotificador, Notificador>();
+            services.AddScoped<IUsuarioService, UsuarioService>();
             return services;
         }
     }

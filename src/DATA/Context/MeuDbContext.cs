@@ -12,7 +12,8 @@ namespace DATA.Context
     {
         public MeuDbContext(DbContextOptions<MeuDbContext> options) : base(options)
         {
-
+            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            ChangeTracker.AutoDetectChangesEnabled = false;
         }
 
         public DbSet<Anuncio> Anuncios { get; set; }
