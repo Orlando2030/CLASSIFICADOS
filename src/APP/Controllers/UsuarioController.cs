@@ -17,8 +17,8 @@ namespace APP.Controllers
 
         public UsuarioController(INotificador notificador, 
                                 IUsuarioRepository usuarioRepository,
-                                 IUsuarioService usuarioService,     
-                                    IMapper mapper)  : base (notificador)
+                                IUsuarioService usuarioService,     
+                                IMapper mapper)  : base (notificador)
         {
             _usuarioRepository = usuarioRepository;
             _usuarioService = usuarioService;
@@ -28,8 +28,9 @@ namespace APP.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UsuarioViewModel>>> ObterTodos()
         {
-            var usuario = _mapper.Map<IEnumerable<UsuarioViewModel>>(await _usuarioRepository.ObterTodos());
-            return Ok(usuario);
+            var usuariosViewModel = _mapper.Map<IEnumerable<UsuarioViewModel>>(await _usuarioRepository.ObterTodos());
+            if (usuariosViewModel == null) return NotFound();
+            return Ok(usuariosViewModel);
         }
 
         [HttpGet("{id:guid}")]
@@ -60,7 +61,7 @@ namespace APP.Controllers
             if (!ModelState.IsValid) return NotFound();
 
             await _usuarioService.Atualizar(_mapper.Map<Usuario>(usuarioViewModel));
-            return usuarioViewModel;
+            return CustomResponse(usuarioViewModel);
         }
 
         [HttpDelete("excluir-usuario/{id:guid}")]
@@ -71,7 +72,7 @@ namespace APP.Controllers
 
 
             await _usuarioService.Remover(id);
-            return usuarioViewModel;
+            return CustomResponse(usuarioViewModel);
         }
 
         private async Task<UsuarioViewModel> ObterUsuario(Guid id)

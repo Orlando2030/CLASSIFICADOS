@@ -30,6 +30,7 @@ namespace APP.Configuration
 
             services.AddScoped<INotificador, Notificador>();
             services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IAnuncioService, AnuncioService>();
             return services;
         }
     }
