@@ -29,8 +29,13 @@ namespace APP.Configuration
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             services.AddScoped<INotificador, Notificador>();
+
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IAnuncioService, AnuncioService>();
+            services.AddScoped<IEnderecoService, EnderecoService>();
+            services.AddScoped<ILojaService, LojaService>();
+            services.AddScoped<IMensagemService, MensagemService>();
+            services.AddScoped<IPedidoService, PedidoService>();
             return services;
         }
     }
