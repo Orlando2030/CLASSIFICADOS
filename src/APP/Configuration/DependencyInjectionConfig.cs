@@ -23,6 +23,7 @@ namespace APP.Configuration
             services.AddScoped<ILojaRepository, LojaRepository>();
             services.AddScoped<IMarcaRepository, MarcaRepository>();
             services.AddScoped<IModeloRepository, ModeloRepository>();
+            services.AddScoped<IMensagemRepository, MensagemRepository>();
             services.AddScoped<IPedidoRepository, PedidoRepository>();
             services.AddScoped<ISubCategoriaRepository, SubCategoriaRepository>();
             services.AddScoped<ITipoAnuncioRepository, TipoAnuncioRepository>();

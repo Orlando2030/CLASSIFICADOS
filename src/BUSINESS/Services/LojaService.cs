@@ -42,7 +42,7 @@ namespace BUSINESS.Services
             await _lojaRepository.Remover(id);
         }
 
-        public async void Dispose()
+        public void Dispose()
         {
             _lojaRepository?.Dispose();
         }
