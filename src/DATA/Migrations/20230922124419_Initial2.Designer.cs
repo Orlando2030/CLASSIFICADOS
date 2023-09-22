@@ -4,6 +4,7 @@ using DATA.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,13 +12,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DATA.Migrations
 {
     [DbContext(typeof(MeuDbContext))]
-    partial class MeuDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230922124419_Initial2")]
+    partial class Initial2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.21")
+                .HasAnnotation("ProductVersion", "6.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -103,9 +105,6 @@ namespace DATA.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AnuncioId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("Dt_Cadastro")
                         .HasColumnType("datetime2");
 
@@ -114,8 +113,6 @@ namespace DATA.Migrations
                         .HasColumnType("varchar(200)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AnuncioId");
 
                     b.ToTable("Categorias", (string)null);
                 });
@@ -365,9 +362,6 @@ namespace DATA.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AnuncioId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("Dt_Cadastro")
                         .HasColumnType("datetime2");
 
@@ -385,8 +379,6 @@ namespace DATA.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AnuncioId");
-
                     b.ToTable("TiposAnuncios", (string)null);
                 });
 
@@ -394,9 +386,6 @@ namespace DATA.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("AnuncioId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Dt_Cadastro")
@@ -416,8 +405,6 @@ namespace DATA.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AnuncioId");
-
                     b.ToTable("Usuarios", (string)null);
                 });
 
@@ -426,16 +413,6 @@ namespace DATA.Migrations
                     b.HasOne("BUSINESS.Models.Pedido", null)
                         .WithMany("Anuncio")
                         .HasForeignKey("PedidoId");
-                });
-
-            modelBuilder.Entity("BUSINESS.Models.Categoria", b =>
-                {
-                    b.HasOne("BUSINESS.Models.Anuncio", "Anuncio")
-                        .WithMany()
-                        .HasForeignKey("AnuncioId")
-                        .IsRequired();
-
-                    b.Navigation("Anuncio");
                 });
 
             modelBuilder.Entity("BUSINESS.Models.Endereco", b =>
@@ -500,26 +477,6 @@ namespace DATA.Migrations
                     b.HasOne("BUSINESS.Models.Categoria", null)
                         .WithMany("SubCategoria")
                         .HasForeignKey("CategoriaId");
-                });
-
-            modelBuilder.Entity("BUSINESS.Models.TipoAnuncio", b =>
-                {
-                    b.HasOne("BUSINESS.Models.Anuncio", "Anuncio")
-                        .WithMany()
-                        .HasForeignKey("AnuncioId")
-                        .IsRequired();
-
-                    b.Navigation("Anuncio");
-                });
-
-            modelBuilder.Entity("BUSINESS.Models.Usuario", b =>
-                {
-                    b.HasOne("BUSINESS.Models.Anuncio", "Anuncio")
-                        .WithMany()
-                        .HasForeignKey("AnuncioId")
-                        .IsRequired();
-
-                    b.Navigation("Anuncio");
                 });
 
             modelBuilder.Entity("BUSINESS.Models.Categoria", b =>
